@@ -26,7 +26,7 @@ This project has been created in the third module at Ironhack São Paulo - Web D
 
 Back-end project for e-commerce Rock Nyl (**web**)!
 
-[Click here](https://github.com/LenineXavier/Rock-Nyl-backend)
+[Click here](https://github.com/BrunoFilippini/Rock-Nyl-Server)
 
 ## Install
 
