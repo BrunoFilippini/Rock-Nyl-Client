@@ -32,6 +32,6 @@ Back-end project for e-commerce Rock Nyl (**web**)!
 
 To run the application on your localhost, clone the repo and then execute the commands below:
 
-- <code>$ git clone https://github.com/bersantos22/Rock-Nyl-Front-End</code>
+- <code>$ git clone https://github.com/BrunoFilippini/Rock-Nyl-Client</code>
 - <code>$ npm install</code>
 - <code>$ npm run dev </code>
