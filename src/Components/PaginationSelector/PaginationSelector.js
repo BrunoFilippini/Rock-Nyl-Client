@@ -1,5 +1,3 @@
-import React from "react";
-
 export function PaginationSelector({ itensPerPage, setItensPerPage }) {
   return (
     <div>
