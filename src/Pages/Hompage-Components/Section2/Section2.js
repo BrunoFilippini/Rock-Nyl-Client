@@ -1,5 +1,3 @@
-import React from "react";
-
 import "./Section2.css";
 
 import { LittleCard } from "../../../Components/LittleCard/LittleCard";
