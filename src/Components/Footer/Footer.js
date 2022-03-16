@@ -79,7 +79,7 @@ export function Footer() {
             </svg>
           </Link>
           <a
-            href="https://github.com/bersantos22/Rock-Nyl-Front-End"
+            href="https://github.com/BrunoFilippini/Rock-Nyl-Client"
             className="text-gray-400 hover:text-white"
           >
             <svg
