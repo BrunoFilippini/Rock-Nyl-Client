@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 import { SearchBar } from "../../Components/SearchBar/SearchBar";
+import { LoadingSpinner } from "../../Components/LoadingSpinner/LoadingSpinner";
 import { PaginationComponent } from "../../Components/PaginationComponent/PaginationComponent";
 import { PaginationSelector } from "../../Components/PaginationSelector/PaginationSelector";
 
@@ -12,6 +13,7 @@ export function ArtistList() {
   const [artists, setArtists] = useState([]);
   const [rerender, setRerender] = useState(true);
   const [backup, setBackup] = useState([]);
+  const [loading, Setloading] = useState(false);
   const [itensPerPage, setItensPerPage] = useState(90);
   const [currentPage, setCurrentPage] = useState(0);
 
@@ -20,8 +22,10 @@ export function ArtistList() {
     async function fetchArtists() {
       try {
         const response = await api.get("/product/all-artists");
+
         setArtists([...response.data]);
         setBackup([...response.data]);
+        Setloading(true);
       } catch (error) {
         console.log(error);
       }
@@ -102,25 +106,32 @@ export function ArtistList() {
         </div>
       </div>
 
-      <div className="flex ">
-        <ul className="grid grid-flow-col grid-rows-12 gap-1">
-          {currentItens.map((currentArtist) => {
-            return (
-
-              <li className="textRobot bg-white shadow-sm rounded px-1 pt-1 pb-1 max-w-sm m-2 hover:text-sky-400" key={currentArtist}>
-                <Link
+      {loading ? (
+        <div className="flex ">
+          <ul className="grid grid-flow-col grid-rows-12 gap-1">
+            {currentItens.map((currentArtist) => {
+              return (
+                <li
+                  className="textRobot bg-white shadow-sm rounded px-1 pt-1 pb-1 max-w-sm m-2 hover:text-sky-400"
                   key={currentArtist}
-                  to={`/product/artist/${currentArtist}`}
                 >
-                  {currentArtist.length > 20
-                    ? `${currentArtist.substring(0, 17)} ...`
-                    : `${currentArtist}`}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </div>
+                  <Link
+                    key={currentArtist}
+                    to={`/product/artist/${currentArtist}`}
+                  >
+                    {currentArtist.length > 20
+                      ? `${currentArtist.substring(0, 17)} ...`
+                      : `${currentArtist}`}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      ) : (
+        <LoadingSpinner />
+      )}
+
       <div className="p-2 my-3">
         <PaginationComponent
           pages={pages}
